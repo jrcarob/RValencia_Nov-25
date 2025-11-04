@@ -59,7 +59,7 @@ class: inverse
 # 1. Autores
 
 .center[
-![:scale 80%](../img/both.png)
+![:scale 80%](img/both.png)
 
 ]
 
@@ -78,7 +78,7 @@ class: inverse, middle
 # 2. Origen y Motivación
 
 
-![:scale 99%](../img/miteco1.png)
+![:scale 99%](img/miteco1.png)
 
 ---
 
@@ -86,7 +86,7 @@ class: inverse, middle
 
 Todo es... <font size="7">😊</font>
 
-![:scale 99%](../img/miteco1a.png)
+![:scale 99%](img/miteco1a.png)
 
 ---
 
@@ -94,7 +94,7 @@ Todo es... <font size="7">😊</font>
 
 ... y avanzamos...<font size="7">😅</font>
 
-![:scale 99%](../img/miteco2.png)
+![:scale 99%](img/miteco2.png)
 
 ---
 
@@ -104,12 +104,12 @@ Todo es... <font size="7">😊</font>
 
 .left-column[
 
-![:scale 70%](../img/pascal1.png)
+![:scale 70%](img/pascal1.png)
 ]
 
 .right-column[
 
-![:scale 90%](../img/miteco3.png)
+![:scale 90%](img/miteco3.png)
 ]
 
 ---
@@ -120,13 +120,13 @@ Sin embargo,... .<font size="7">🥵</font>
 
 .left-column[
 
-![:scale 70%](../img/pascal2.png)
+![:scale 70%](img/pascal2.png)
 
 ]
 
 .right-column[
 
-![:scale 90%](../img/miteco4.png)
+![:scale 90%](img/miteco4.png)
 
 ]
 
@@ -140,14 +140,14 @@ Sin embargo,... .<font size="7">🥵</font>
 
 - .hi-pink[Año 2023] <font size="7">🤬</font>
 
-![:scale 80%](../img/miteco5.png)
+![:scale 80%](img/miteco5.png)
 ]
 
 .right-column[
 
 - .hi-pink[Año 2010] <font size="7">🤯</font>
 
-![:scale 99%](../img/miteco6.png)
+![:scale 99%](img/miteco6.png)
 
 ]
 ---
@@ -173,7 +173,7 @@ Sin embargo,... .<font size="7">🥵</font>
 ## .hi-purple[Resumiendo:<br> ¡caos, pesadilla, debacle, descontrol, frustración, llantos, lágrimas,...!]
 
 .center[
-![:scale 75%](../img/chaotic.jpg)
+![:scale 75%](img/chaotic.jpg)
 ]
 
 ---
@@ -244,14 +244,14 @@ library(airquality)
 .pull-left-3[
 - **Años:** .hi-purple[2001 - 2022]
 .center[
-![:scale 75%](../img/tibble1.png)
+![:scale 75%](img/tibble1.png)
 ]
 ]
 
 .pull-middle-3[
 - **Contaminantes:** .hi-purple[8]
 .center[
-![:scale 90%](../img/tibble2.png)
+![:scale 90%](img/tibble2.png)
 ]
 ]
 
@@ -259,7 +259,7 @@ library(airquality)
 - **Ciudades:** .hi-purple[190]<br>
 - **Estaciones:** .hi-purple[779]
 .left[
-![:scale 100%](../img/tibble3.png)
+![:scale 100%](img/tibble3.png)
 ]
 
 ]
@@ -272,7 +272,7 @@ library(airquality)
 
 .hi-purple[## .purple[Matriz: 160.114 x 36]] 
 
-![:scale 99%](../img/matrix.png)
+![:scale 99%](img/matrix.png)
 
 ]
 
@@ -296,7 +296,7 @@ library(airquality)
 
 .pull-right[
 
-![:scale 99%](../img/tidy.png)
+![:scale 99%](img/tidy.png)
 
 ]
 
@@ -322,7 +322,7 @@ class: inverse, middle
 
 ## .purple[Efecto del Confinamiento en la ciudad de Valencia]
 
-![:scale 99%](../img/patterns.png)
+![:scale 99%](img/patterns.png)
 Niveles de contaminación diarios para partículas PM2.5 durante los meses enero-junio 
 para 2019 y 2020.
 
@@ -340,7 +340,7 @@ class: inverse, middle
 ## .purple[¿Son las fiestas locales una fuente de contaminación atmosférica?]
 
 .center[
-![:scale 80%](../img/PM25c.png)
+![:scale 80%](img/PM25c.png)
 ]
 
 ---
