@@ -1,0 +1,361 @@
+---
+title: "`airqualityEs`"
+subtitle: "Un Paquete de R para Acceder a Datos de Contaminación del Aire en España <br> IV Congreso & XV Jornadas de Usuarios de R <br> 6-7 Noviembre, 2025 • Valencia "
+author: '<i class="fa fa-copyright fa-fw"></i>José Vicente Die Ramón<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z42diraj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z42diraj@uco.es</a><br> <i class="fa fa-copyright fa-fw"></i>José Rafael Caro Barrera<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z52cabaj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z52cabaj@uco.es</a> <br> Universidad de Córdoba <br><a href="https://cran.r-project.org/package=airqualityES"><i class="fa fa-github fa-fw"></i>10.32614/CRAN.package.airqualityES</a><br>'
+#date:
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    #seal: false
+    css: [custom.css, "hygge"] #, metropolis, metropolis-fonts
+    nature:
+      beforeInit: ["macros.js", "https://platform.twitter.com/widgets.js"] # first is for rescaling images , second is for embedding tweets, https://github.com/yihui/xaringan/issues/100
+      highlightStyle: ocean #rainbow #monokai rainbow solarized-light #tomorrow-night -blue -eighties zenburn
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          <div class="footer">© J.R. Caro Barrera
+          </div>
+          </div>
+        </div>
+    includes:
+      in_header: header.html # for font awesome, used in title  
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F,
+                      fig.retina=3,
+                      fig.align = "center")
+library("tidyverse")
+library("fontawesome")
+xaringanExtra::use_tile_view()
+xaringanExtra::use_tachyons()
+
+theme_slides <- theme_light() + 
+  theme(
+    text = element_text(family = "Fira Sans", size = 24)
+  )
+```
+
+class: inverse
+
+# _Outline_
+
+### [1. Autores](#3)
+### [2. Origen y Motivación](#4)
+.white[• Recopilar Datos del _Miteco:_ una Misión "casi" Imposible... si decides aceptarla]<br>
+### [3. Instalación y Funcionalidades](#13)
+### [Aplicación: Confinamiento Humano vs. Saneamiento Atmosférico ](#22)
+### [Aplicación: ¿Son las _Fallas de Valencia_ un fallo para el Medioambiente? ](#24)
+
+---
+
+# 1. Autores
+
+.center[
+![:scale 80%](../img/both.png)
+
+]
+
+---
+
+class: inverse, middle
+
+# La _insoportable gravedad_ de trabajar con datos de organismos oficiales españoles:<br> el caso del _Miteco_
+
+> .white[_"In God we trust, all others bring data."_].fuente[W. Edwards Deming, *Estadístico estadounidense.*]
+
+> .white[_"Data is the new oil."_].fuente[Clive Humby, *Matemático británico.*]
+
+---
+
+# 2. Origen y Motivación
+
+
+![:scale 99%](../img/miteco1.png)
+
+---
+
+# 2. Origen y Motivación
+
+Todo es... <font size="7">😊</font>
+
+![:scale 99%](../img/miteco1a.png)
+
+---
+
+# 2. Origen y Motivación
+
+... y avanzamos...<font size="7">😅</font>
+
+![:scale 99%](../img/miteco2.png)
+
+---
+
+# 2. Origen y Motivación
+
+... y seguimos..., hasta que, .hi-pink[¡por fin...!]
+
+.left-column[
+
+![:scale 70%](../img/pascal1.png)
+]
+
+.right-column[
+
+![:scale 90%](../img/miteco3.png)
+]
+
+---
+
+# 2. Origen y Motivación
+
+Sin embargo,... .<font size="7">🥵</font>
+
+.left-column[
+
+![:scale 70%](../img/pascal2.png)
+
+]
+
+.right-column[
+
+![:scale 90%](../img/miteco4.png)
+
+]
+
+---
+
+# 2. Origen y Motivación
+
+## ... y así...<font size="7">😤</font>
+
+.left-column[
+
+- .hi-pink[Año 2023] <font size="7">🤬</font>
+
+![:scale 80%](../img/miteco5.png)
+]
+
+.right-column[
+
+- .hi-pink[Año 2010] <font size="7">🤯</font>
+
+![:scale 99%](../img/miteco6.png)
+
+]
+---
+
+- .hi-purple[2001 - 2011: cada contaminante se presenta en fichero `.xlsx`]
+
+- .hi-purple[2012: cada contaminante se presenta en fichero `.xlsx` y `.csv`]
+
+- .hi-purple[2013: cada contaminante se presenta en fichero `.csv`]
+
+- .hi-purple[2014 - 2016: cada contaminante se presenta en fichero `.xlsx`]
+
+- .hi-purple[2017 - 2022 : cada contaminante se presenta en fichero `.csv`]
+
+.bg-washed-red.b--dark-red.ba.bw2.br3.shadow-5.ph3.mt1[
+
+## > 130 ficheros en múltiples formatos <font size="10">🤯🤯🤯</font>
+
+]
+
+---
+
+## .hi-purple[Resumiendo:<br> ¡caos, pesadilla, debacle, descontrol, frustración, llantos, lágrimas,...!]
+
+.center[
+![:scale 75%](../img/chaotic.jpg)
+]
+
+---
+
+class: inverse, middle
+
+# El paquete `airqualityEs`
+
+> .white["_The purpose of (data) display is comparison (recognition of phenomena), not numbers... The phenomena are the main actors, numbers are supporting cast._"]<br>.fuente[John Tukey, 1973, *Estadístico estadounidense.*]
+
+---
+
+# 3. Instalación y Funcionalidades
+
+.pull-left[
+- Conjunto de datos que contiene .hi-purple[mediciones diarias de la calidad del aire en España durante un periodo de 22 años (de 2001 a 2022)]. Las mediciones se refieren a varios contaminantes:
+
+- .hi-pink[PM<sub>10</sub>] y .hi-pink[PM<sub>2.5</sub>]
+- .hi-pink[Pb] 
+- .hi-pink[Cd] 
+- .hi-pink[As] 
+- .hi-pink[Ni]
+- .hi-pink[C<sub>6</sub>H<sub>6</sub>]
+]
+
+--
+
+.pull-right[
+
+- Son **datos publicados abiertamente** por el _Gobierno de España_. 
+
+- Los conjuntos de datos estaban **originalmente repartidos en varios archivos y formatos**. 
+
+- .hi-green[Aportación:] la misma información se encuentra en `airqualityES` en un sencillo marco de datos para facilitar la consulta a investigadores, periodistas o al público en general.
+
+]
+
+
+---
+
+# 3. Instalación y Funcionalidades
+
+```{r simple_code, echo = TRUE, eval = FALSE}
+install.packages("airqualityES")
+```
+
+La última versión en desarrollo del paquete también se puede cargar directamente desde GitHub utilizando el paquete devtools:
+
+```{r simple_code2, echo = TRUE, eval = FALSE}
+library(devtools)
+install_github("jdieramon/airqualityES")
+library(airquality)
+```
+
+--
+
+- .hi-pink[What's new?]
+
+  - `v.1.1.0` .hi-purple[29-02-2020 Lanzamiento]
+  - `v.1.2.0` .hi-red[XX-11-2025 Primera actualización]
+      - Data update: 2019 - actual
+      - Introducción de un nuevo contaminante: **benzo[a]pyrene**
+    
+---
+
+# 3. Instalación y Funcionalidades
+
+.pull-left-3[
+- **Años:** .hi-purple[2001 - 2022]
+.center[
+![:scale 75%](../img/tibble1.png)
+]
+]
+
+.pull-middle-3[
+- **Contaminantes:** .hi-purple[8]
+.center[
+![:scale 90%](../img/tibble2.png)
+]
+]
+
+.pull-right-3[
+- **Ciudades:** .hi-purple[190]<br>
+- **Estaciones:** .hi-purple[779]
+.left[
+![:scale 100%](../img/tibble3.png)
+]
+
+]
+
+---
+
+# 3. Instalación y Funcionalidades
+
+.center[
+
+.hi-purple[## .purple[Matriz: 160.114 x 36]] 
+
+![:scale 99%](../img/matrix.png)
+
+]
+
+---
+
+# 3. Instalación y Funcionalidades
+
+## Principio de Datos Ordenados `tidydata`
+
+.pull-left[
+
+- `pivot_longer()` 
+  - cada .hi-pink[variable] en una .hi-pink[columna]
+  - cada .hi-purple[observación] en una .hi-purple[fila]
+  - cada .hi-green[valor] en una .hi-green[celda]
+
+- permite **agrupar**, **filtrar**, **resumir** 
+ 
+ 
+]
+
+.pull-right[
+
+![:scale 99%](../img/tidy.png)
+
+]
+
+--
+
+.bg-washed-green.b--dark-greem.ba.bw2.br3.shadow-5.ph3.mt1[
+
+Facilita análisis y visualización para:
+
+-  Descubrir patrones y plantear hipótesis.
+
+]
+
+---
+
+class: inverse, middle
+
+# Repercusiones Atmosféricas del Confinamiento: ¿Fue ... para la Atmósfera? 
+
+> .white[_"Graphics is the visual means of resolving logical problems."_] .fuente[Jacques Bertin, *Graphics and Graphic Information Processing (2011).*]
+
+---
+
+## .purple[Efecto del Confinamiento en la ciudad de Valencia]
+
+![:scale 99%](../img/patterns.png)
+Niveles de contaminación diarios para partículas PM2.5 durante los meses enero-junio 
+para 2019 y 2020.
+
+---
+
+class: inverse, middle
+
+# El fallo de _Las Fallas:_ ¿son _Las Fallas_ un elemento contaminante para la atmósfera? 
+
+
+> .white[_"...But is not always clear which 1000 words."_] .fuente[John Tukey, 1973, *Estadístico estadounidense*]
+
+---
+
+## .purple[¿Son las fiestas locales una fuente de contaminación atmosférica?]
+
+.center[
+![:scale 80%](../img/PM25c.png)
+]
+
+---
+
+class: middle, inverse, center
+
+# Gracias
+
+.center[
+
+### José V. Die Ramón
+
+### José R. Caro Barrera
+
+]
+
+
+---

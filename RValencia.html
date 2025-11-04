@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>airqualityEs</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="José Vicente Die Ramónz42diraj@uco.es  José Rafael Caro Barreraz52cabaj@uco.es   Universidad de Córdoba  10.32614/CRAN.package.airqualityES " />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# <code>airqualityEs</code>
+]
+.subtitle[
+## Un Paquete de R para Acceder a Datos de Contaminación del Aire en España <br> IV Congreso &amp; XV Jornadas de Usuarios de R <br> 6-7 Noviembre, 2025 • Valencia
+]
+.author[
+### <i class="fa fa-copyright fa-fw"></i>José Vicente Die Ramón<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z42diraj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z42diraj@uco.es</a><br> <i class="fa fa-copyright fa-fw"></i>José Rafael Caro Barrera<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z52cabaj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z52cabaj@uco.es</a> <br> Universidad de Córdoba <br><a href="https://cran.r-project.org/package=airqualityES"><i class="fa fa-github fa-fw"></i>10.32614/CRAN.package.airqualityES</a><br>
+]
+
+---
+
+
+
+
+class: inverse
+
+# _Outline_
+
+### [1. Autores](#3)
+### [2. Origen y Motivación](#4)
+.white[• Recopilar Datos del _Miteco:_ una Misión "casi" Imposible... si decides aceptarla]&lt;br&gt;
+### [3. Instalación y Funcionalidades](#13)
+### [Aplicación: Confinamiento Humano vs. Saneamiento Atmosférico ](#22)
+### [Aplicación: ¿Son las _Fallas de Valencia_ un fallo para el Medioambiente? ](#24)
+
+---
+
+# 1. Autores
+
+.center[
+![:scale 80%](../img/both.png)
+
+]
+
+---
+
+class: inverse, middle
+
+# La _insoportable gravedad_ de trabajar con datos de organismos oficiales españoles:&lt;br&gt; el caso del _Miteco_
+
+&gt; .white[_"In God we trust, all others bring data."_].fuente[W. Edwards Deming, *Estadístico estadounidense.*]
+
+&gt; .white[_"Data is the new oil."_].fuente[Clive Humby, *Matemático británico.*]
+
+---
+
+# 2. Origen y Motivación
+
+
+![:scale 99%](../img/miteco1.png)
+
+---
+
+# 2. Origen y Motivación
+
+Todo es... &lt;font size="7"&gt;😊&lt;/font&gt;
+
+![:scale 99%](../img/miteco1a.png)
+
+---
+
+# 2. Origen y Motivación
+
+... y avanzamos...&lt;font size="7"&gt;😅&lt;/font&gt;
+
+![:scale 99%](../img/miteco2.png)
+
+---
+
+# 2. Origen y Motivación
+
+... y seguimos..., hasta que, .hi-pink[¡por fin...!]
+
+.left-column[
+
+![:scale 70%](../img/pascal1.png)
+]
+
+.right-column[
+
+![:scale 90%](../img/miteco3.png)
+]
+
+---
+
+# 2. Origen y Motivación
+
+Sin embargo,... .&lt;font size="7"&gt;🥵&lt;/font&gt;
+
+.left-column[
+
+![:scale 70%](../img/pascal2.png)
+
+]
+
+.right-column[
+
+![:scale 90%](../img/miteco4.png)
+
+]
+
+---
+
+# 2. Origen y Motivación
+
+## ... y así...&lt;font size="7"&gt;😤&lt;/font&gt;
+
+.left-column[
+
+- .hi-pink[Año 2023] &lt;font size="7"&gt;🤬&lt;/font&gt;
+
+![:scale 80%](../img/miteco5.png)
+]
+
+.right-column[
+
+- .hi-pink[Año 2010] &lt;font size="7"&gt;🤯&lt;/font&gt;
+
+![:scale 99%](../img/miteco6.png)
+
+]
+---
+
+- .hi-purple[2001 - 2011: cada contaminante se presenta en fichero `.xlsx`]
+
+- .hi-purple[2012: cada contaminante se presenta en fichero `.xlsx` y `.csv`]
+
+- .hi-purple[2013: cada contaminante se presenta en fichero `.csv`]
+
+- .hi-purple[2014 - 2016: cada contaminante se presenta en fichero `.xlsx`]
+
+- .hi-purple[2017 - 2022 : cada contaminante se presenta en fichero `.csv`]
+
+.bg-washed-red.b--dark-red.ba.bw2.br3.shadow-5.ph3.mt1[
+
+## &gt; 130 ficheros en múltiples formatos &lt;font size="10"&gt;🤯🤯🤯&lt;/font&gt;
+
+]
+
+---
+
+## .hi-purple[Resumiendo:&lt;br&gt; ¡caos, pesadilla, debacle, descontrol, frustración, llantos, lágrimas,...!]
+
+.center[
+![:scale 75%](../img/chaotic.jpg)
+]
+
+---
+
+class: inverse, middle
+
+# El paquete `airqualityEs`
+
+&gt; .white["_The purpose of (data) display is comparison (recognition of phenomena), not numbers... The phenomena are the main actors, numbers are supporting cast._"]&lt;br&gt;.fuente[John Tukey, 1973, *Estadístico estadounidense.*]
+
+---
+
+# 3. Instalación y Funcionalidades
+
+.pull-left[
+- Conjunto de datos que contiene .hi-purple[mediciones diarias de la calidad del aire en España durante un periodo de 22 años (de 2001 a 2022)]. Las mediciones se refieren a varios contaminantes:
+
+- .hi-pink[PM&lt;sub&gt;10&lt;/sub&gt;] y .hi-pink[PM&lt;sub&gt;2.5&lt;/sub&gt;]
+- .hi-pink[Pb] 
+- .hi-pink[Cd] 
+- .hi-pink[As] 
+- .hi-pink[Ni]
+- .hi-pink[C&lt;sub&gt;6&lt;/sub&gt;H&lt;sub&gt;6&lt;/sub&gt;]
+]
+
+--
+
+.pull-right[
+
+- Son **datos publicados abiertamente** por el _Gobierno de España_. 
+
+- Los conjuntos de datos estaban **originalmente repartidos en varios archivos y formatos**. 
+
+- .hi-green[Aportación:] la misma información se encuentra en `airqualityES` en un sencillo marco de datos para facilitar la consulta a investigadores, periodistas o al público en general.
+
+]
+
+
+---
+
+# 3. Instalación y Funcionalidades
+
+
+``` r
+install.packages("airqualityES")
+```
+
+La última versión en desarrollo del paquete también se puede cargar directamente desde GitHub utilizando el paquete devtools:
+
+
+``` r
+library(devtools)
+install_github("jdieramon/airqualityES")
+library(airquality)
+```
+
+--
+
+- .hi-pink[What's new?]
+
+  - `v.1.1.0` .hi-purple[29-02-2020 Lanzamiento]
+  - `v.1.2.0` .hi-red[XX-11-2025 Primera actualización]
+      - Data update: 2019 - actual
+      - Introducción de un nuevo contaminante: **benzo[a]pyrene**
+    
+---
+
+# 3. Instalación y Funcionalidades
+
+.pull-left-3[
+- **Años:** .hi-purple[2001 - 2022]
+.center[
+![:scale 75%](../img/tibble1.png)
+]
+]
+
+.pull-middle-3[
+- **Contaminantes:** .hi-purple[8]
+.center[
+![:scale 90%](../img/tibble2.png)
+]
+]
+
+.pull-right-3[
+- **Ciudades:** .hi-purple[190]&lt;br&gt;
+- **Estaciones:** .hi-purple[779]
+.left[
+![:scale 100%](../img/tibble3.png)
+]
+
+]
+
+---
+
+# 3. Instalación y Funcionalidades
+
+.center[
+
+.hi-purple[## .purple[Matriz: 160.114 x 36]] 
+
+![:scale 99%](../img/matrix.png)
+
+]
+
+---
+
+# 3. Instalación y Funcionalidades
+
+## Principio de Datos Ordenados `tidydata`
+
+.pull-left[
+
+- `pivot_longer()` 
+  - cada .hi-pink[variable] en una .hi-pink[columna]
+  - cada .hi-purple[observación] en una .hi-purple[fila]
+  - cada .hi-green[valor] en una .hi-green[celda]
+
+- permite **agrupar**, **filtrar**, **resumir** 
+ 
+ 
+]
+
+.pull-right[
+
+![:scale 99%](../img/tidy.png)
+
+]
+
+--
+
+.bg-washed-green.b--dark-greem.ba.bw2.br3.shadow-5.ph3.mt1[
+
+Facilita análisis y visualización para:
+
+-  Descubrir patrones y plantear hipótesis.
+
+]
+
+---
+
+class: inverse, middle
+
+# Repercusiones Atmosféricas del Confinamiento: ¿Fue ... para la Atmósfera? 
+
+&gt; .white[_"Graphics is the visual means of resolving logical problems."_] .fuente[Jacques Bertin, *Graphics and Graphic Information Processing (2011).*]
+
+---
+
+## .purple[Efecto del Confinamiento en la ciudad de Valencia]
+
+![:scale 99%](../img/patterns.png)
+Niveles de contaminación diarios para partículas PM2.5 durante los meses enero-junio 
+para 2019 y 2020.
+
+---
+
+class: inverse, middle
+
+# El fallo de _Las Fallas:_ ¿son _Las Fallas_ un elemento contaminante para la atmósfera? 
+
+
+&gt; .white[_"...But is not always clear which 1000 words."_] .fuente[John Tukey, 1973, *Estadístico estadounidense*]
+
+---
+
+## .purple[¿Son las fiestas locales una fuente de contaminación atmosférica?]
+
+.center[
+![:scale 80%](../img/PM25c.png)
+]
+
+---
+
+class: middle, inverse, center
+
+# Gracias
+
+.center[
+
+### José V. Die Ramón
+
+### José R. Caro Barrera
+
+]
+
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "ocean",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  <div class=\"footer\">© J.R. Caro Barrera\n  </div>\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
