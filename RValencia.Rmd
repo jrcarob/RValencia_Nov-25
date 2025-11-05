@@ -1,7 +1,7 @@
 ---
-title: "`airqualityEs`"
-subtitle: "Un Paquete de R para Acceder a Datos de Contaminación del Aire en España <br> IV Congreso & XV Jornadas de Usuarios de R <br> 6-7 Noviembre, 2025 • Valencia "
-author: '<i class="fa fa-copyright fa-fw"></i>José Vicente Die Ramón<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z42diraj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z42diraj@uco.es</a><br> <i class="fa fa-copyright fa-fw"></i>José Rafael Caro Barrera<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z52cabaj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z52cabaj@uco.es</a> <br> Universidad de Córdoba <br><a href="https://cran.r-project.org/package=airqualityES"><i class="fa fa-github fa-fw"></i>10.32614/CRAN.package.airqualityES</a><br>'
+title: "`airqualityES`"
+subtitle: "Un Paquete de R para Acceder a Datos de Contaminación del Aire en España <br> IV Congreso &<br> XV Jornadas de Usuarios de R <br> 5, 6 y 7 Noviembre, 2025 <br> • Valencia • "
+#author: '<i class="fa fa-copyright fa-fw"></i>José Vicente Die Ramón<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z42diraj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z42diraj@uco.es</a><br> <i class="fa fa-copyright fa-fw"></i>José Rafael Caro Barrera<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z52cabaj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z52cabaj@uco.es</a> <br> Universidad de Córdoba <br><a href="https://cran.r-project.org/package=airqualityES"><i class="fa fa-github fa-fw"></i>10.32614/CRAN.package.airqualityES</a><br>'
 #date:
 output:
   xaringan::moon_reader:
@@ -51,8 +51,8 @@ class: inverse
 ### [2. Origen y Motivación](#4)
 .white[• Recopilar Datos del _Miteco:_ una Misión "casi" Imposible... si decides aceptarla]<br>
 ### [3. Instalación y Funcionalidades](#13)
-### [Aplicación: Confinamiento Humano vs. Saneamiento Atmosférico ](#22)
-### [Aplicación: ¿Son las _Fallas de Valencia_ un fallo para el Medioambiente? ](#24)
+### [Aplicación: Confinamiento Humano vs. Saneamiento Ambiental ](#22)
+### [Aplicación: ¿Son las _Fallas de Valencia_ un fallo para la Calidad del Aire? ](#24)
 
 ---
 
@@ -233,7 +233,7 @@ library(airquality)
 - .hi-pink[What's new?]
 
   - `v.1.1.0` .hi-purple[29-02-2020 Lanzamiento]
-  - `v.1.2.0` .hi-red[XX-11-2025 Primera actualización]
+  - `v.1.2.0` .hi-red[30-11-2025 Primera actualización]
       - Data update: 2019 - actual
       - Introducción de un nuevo contaminante: **benzo[a]pyrene**
     
@@ -314,7 +314,7 @@ Facilita análisis y visualización para:
 
 class: inverse, middle
 
-# Repercusiones Atmosféricas del Confinamiento: ¿Fue ... para la Atmósfera? 
+# Repercusiones Ambientales del Confinamiento: ¿Fue Beneficioso para la Calidad del Aire? 
 
 > .white[_"Graphics is the visual means of resolving logical problems."_] .fuente[Jacques Bertin, *Graphics and Graphic Information Processing (2011).*]
 
@@ -351,11 +351,6 @@ class: middle, inverse, center
 
 .center[
 
-### José V. Die Ramón
-
-### José R. Caro Barrera
+<i class="fa fa-copyright fa-fw"></i>José Vicente Die Ramón<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z42diraj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z42diraj@uco.es</a><br> <i class="fa fa-copyright fa-fw"></i>José Rafael Caro Barrera<i class="fa fa-creative-commons fa-fw"></i><a href="mailto:z52cabaj@uco.es"><i class="fa fa-paper-plane fa-fw"></i>z52cabaj@uco.es</a> <br> Universidad de Córdoba <br><a href="https://cran.r-project.org/package=airqualityES"><i class="fa fa-github fa-fw"></i>10.32614/CRAN.package.airqualityES</a><br><a href="https://github.com/jrcarob/RValencia_Nov-25"><i class="fa fa-github fa-fw"></i>https://github.com/jrcarob/RValencia_Nov-25</a><br>
 
 ]
-
-
----
