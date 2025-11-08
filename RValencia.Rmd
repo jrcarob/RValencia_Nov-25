@@ -330,19 +330,25 @@ para 2019 y 2020.
 
 class: inverse, middle
 
-# El fallo de _Las Fallas:_ ¿son _Las Fallas_ un elemento contaminante para la atmósfera? 
+# El fallo de _Las Fallas:_ ¿son _Las Fallas_ un Elemento Contaminante para la Calidad del Aire? 
 
 
 > .white[_"...But is not always clear which 1000 words."_] .fuente[John Tukey, 1973, *Estadístico estadounidense*]
 
 ---
 
-## .purple[¿Son las fiestas locales una fuente de contaminación atmosférica?]
+## .purple[¿Son las fiestas locales una fuente de contaminación ambiental?]
 
 .center[
 ![:scale 80%](img/PM25c.png)
 ]
 
+---
+
+.center[
+![:scale 80%](img/ropenspain.png)
+
+]
 ---
 
 class: middle, inverse, center
